@@ -1,0 +1,24 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 500px;
+    align-items: center;
+}
+
+.grid {
+    display: grid;
+    margin: auto auto;
+    box-shadow: 2px 2px 20px 3px salmon;
+    min-height: 500px;
+    min-width: 500px;
+    max-width: 500px;
+    max-width: 500px;
+}
