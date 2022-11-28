@@ -9,6 +9,9 @@ body {
     margin-bottom: 20px;
 }
 
+.message {
+    margin-bottom: 20px;
+}
 
 .board {
     box-shadow: 2px 2px 20px 3px salmon;
