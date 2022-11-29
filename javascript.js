@@ -1,9 +1,23 @@
 let color = "black"
+let click = false
 
 
 
 document.addEventListener("DOMContentLoaded", function() {
     createBoard(16);
+
+    document.querySelector("body").addEventListener("click", function(e){
+        if(e.target.tagName != "BUTTON"){
+            click = !click;
+            let draw = document.querySelector("#draw")
+            if (click) {
+                draw.innerHTML = "You can now draw"
+            } else {
+                draw.innerHTML = "You're not allowed to draw"
+            }
+        }
+    })
+
     let btn_popup = document.querySelector(".gridSize");
     btn_popup.addEventListener("click", function(){
         let size = getSize();
@@ -33,25 +47,27 @@ function createBoard(size) {
 function getSize() { 
     let input = prompt("What will the size of the board be?")
     let message = document.querySelector(".message")
-    if (input == ""){
-        message.innerHTML = "Please provide a number"
-    } else if (input < 0 || input > 100) {
-        message.innerHTML = "Provide a number between 1 and 100"
-    } else {
-        message.innerHTML = "Now you can play!"
-        return input;
-    }
+        if (input == ""){
+            message.innerHTML = "Please provide a number"
+        } else if (input < 0 || input > 100) {
+            message.innerHTML = "Provide a number between 1 and 100"
+        } else {
+            message.innerHTML = "Now you can play!"
+            return input;
+        }
 }
 
 function colorDiv(){
-    if(color == "rainbowButton"){
-        this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`
-    } else if (color == "mainButton"){
-        this.style.backgroundColor = "black"
-    } else if (color == "eraser"){
-        this.style.backgroundColor = "white"
-    } else {
-        this.backgroundColor = "black"
+    if (click) {
+        if(color == "rainbowButton"){
+            this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`
+        } else if (color == "mainButton"){
+            this.style.backgroundColor = "black"
+        } else if (color == "eraser"){
+            this.style.backgroundColor = "white"
+        } else {
+            this.backgroundColor = "black"
+        }
     }
 }
 
