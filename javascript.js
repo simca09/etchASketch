@@ -1,3 +1,7 @@
+let color = "black"
+
+
+
 document.addEventListener("DOMContentLoaded", function() {
     createBoard(16);
     let btn_popup = document.querySelector(".gridSize");
@@ -21,9 +25,9 @@ function createBoard(size) {
 
     for (let i = 0; i < numDivs; i++) {
         let repDiv = document.createElement("div");
-        repDiv.style.background = "yellow";
+        repDiv.addEventListener("mouseover", colorDiv)
         board.insertAdjacentElement("beforeend", repDiv);
-    } 
+}
 };
 
 function getSize() { 
@@ -39,4 +43,23 @@ function getSize() {
     }
 }
 
+function colorDiv(){
+    if(color == "rainbowButton"){
+        this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`
+    } else if (color == "mainButton"){
+        this.style.backgroundColor = "black"
+    } else if (color == "eraser"){
+        this.style.backgroundColor = "white"
+    } else {
+        this.backgroundColor = "black"
+    }
+}
 
+function setColor(colorChoice){
+    color = colorChoice;
+}
+
+function resetBoard(){
+    let divs = document.querySelectorAll("div")
+    divs.forEach((div) => div.style.backgroundColor = "white")
+}
